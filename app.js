@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
 //without using JSX, core way to do it
 // const heading = React.createElement("div", { id: "parent" }, [
@@ -14,27 +14,77 @@ import ReactDOM from "react-dom";
 // ]);
 
 //with useing JSX
-const heading = (
-  <div className="aniket" id="aniket">
-    <h1>my name is aniket mote i am wotking in accenture</h1>
-    <h2>my name is aniket</h2>
-  </div>
-);
 
 //functional Component
-const ChildComponenet = () => (
-  <div className="dp">
-    <h1>dp</h1>
-    <h2>mote</h2>
+const SearchComponent = () => {
+  return (
+    <div className="app-search">
+      <textarea className="searchbar" placeholder="Search here...."></textarea>
+    </div>
+  );
+};
+const CardComponent = (props) => {
+  return (
+    <div className="card">
+      <img
+        className="card-img"
+        src="https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo-700x394.png"
+      ></img>
+      <h4>{props.resName}</h4>
+      <h4>{props.resPrice}</h4>
+      <h4>{props.resMin}</h4>
+    </div>
+  );
+};
+const ResComponent = () => {
+  return (
+    <div className="restuarant-list">
+      <CardComponent resName="kfc" resPrice="400" resMin="40" />
+      {/* <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent />
+      <CardComponent /> */}
+    </div>
+  );
+};
+const HeaderComponenet = () => {
+  return (
+    <div className="app-Header">
+      <div className="app-logo">
+        <img
+          className="logo"
+          alt="logo-Loding"
+          src="https://logos-world.net/wp-content/uploads/2020/11/Swiggy-Logo-700x394.png"
+        />
+      </div>
+      <div className="app-menu">
+        <ul>
+          <li>Home</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  );
+};
+const BodyComponent = () => {
+  return (
+    <div className="bodyComponent">
+      <SearchComponent />
+      <ResComponent />
+    </div>
+  );
+};
+const ReactApp = () => (
+  <div>
+    <HeaderComponenet />
+    <BodyComponent />
   </div>
 );
-const HeadingComponent = () => (
-  <div className="aniketmote">
-    <h1>aniket</h1>
-    <h2>mote</h2>
-    <ChildComponenet />
-  </div>
-);
-const root = ReactDOM.createRoot(document.getElementById("rootDiv"));
-// root.render(heading);
-root.render(<HeadingComponent />);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<ReactApp />);
